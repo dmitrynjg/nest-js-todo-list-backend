@@ -1,5 +1,5 @@
 import { IsString, Matches } from 'class-validator';
-import { GlobalDto } from 'src/uttils/dto/global.dto';
+import { GlobalDto } from 'src/utils/dto/global.dto';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class AuthUserDto extends GlobalDto {

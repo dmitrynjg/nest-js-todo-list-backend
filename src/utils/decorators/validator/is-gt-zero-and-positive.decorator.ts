@@ -5,7 +5,7 @@ import {
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-export function IsGtZeroAndPositive(validationOptions?: ValidationOptions) {
+export function IsGtZeroAndInt(validationOptions?: ValidationOptions) {
   return function (object: any, propertyName: string) {
     registerDecorator({
       name: 'isGtZeroAndPositive',

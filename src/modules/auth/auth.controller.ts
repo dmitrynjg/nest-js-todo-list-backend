@@ -1,7 +1,7 @@
 import { Controller, Post, Body, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CreateUserDto } from 'src/modules/users/dto/create-user.dto';
-import { ErrorResponse } from 'src/uttils/swagger/error-response';
+import { ErrorResponse } from 'src/utils/swagger/error-response';
 import { AuthService } from './auth.service';
 import { AuthUserDto } from './dto/auth-user.dto';
 import { NotAuthGuard } from './guards/not-auth.guard';

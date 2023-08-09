@@ -1,6 +1,6 @@
 import { IsString, IsUUID, IsOptional } from 'class-validator';
-import { IsEmoji } from 'src/uttils/decorators/validator/emoji.decorator';
-import { GlobalDto } from 'src/uttils/dto/global.dto';
+import { IsEmoji } from 'src/utils/decorators/validator/emoji.decorator';
+import { GlobalDto } from 'src/utils/dto/global.dto';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateFolderDto extends GlobalDto {

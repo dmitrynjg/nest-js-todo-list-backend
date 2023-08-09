@@ -12,17 +12,17 @@ import {
 import { FoldersService } from './folders.service';
 import { CreateFolderDto } from './dto/create-folder.dto';
 import { UpdateFolderDto } from './dto/update-folder.dto';
-import { User } from 'src/uttils/decorators/user/user.decerator';
+import { User } from 'src/utils/decorators/user/user.decerator';
 import { AuthGuard } from '../auth/guards/auth.guard';
-import { QueryBuilderPipe } from 'src/uttils/query-builder/pipes/query-builder.pipe';
+import { QueryBuilderPipe } from 'src/utils/query-builder/pipes/query-builder.pipe';
 import { FindOptions } from 'sequelize';
 import { TasksService } from '../tasks/tasks.service';
 import { ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger';
-import { QueryParamsDto } from 'src/uttils/query-builder/dto/query-params-dto';
+import { QueryParamsDto } from 'src/utils/query-builder/dto/query-params-dto';
 import { Folder } from './entities/folder.entity';
-import { UpdateOrDeleteResponse } from 'src/uttils/swagger/update-or-delete-response';
+import { UpdateOrDeleteResponse } from 'src/utils/swagger/update-or-delete-response';
 import { Task } from '../tasks/entities/task.entity';
-import { ErrorResponse } from 'src/uttils/swagger/error-response';
+import { ErrorResponse } from 'src/utils/swagger/error-response';
 
 @Controller('folders')
 export class FoldersController {

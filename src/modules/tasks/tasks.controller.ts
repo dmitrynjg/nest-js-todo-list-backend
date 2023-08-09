@@ -12,12 +12,12 @@ import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { AuthGuard } from '../auth/guards/auth.guard';
-import { User } from 'src/uttils/decorators/user/user.decerator';
+import { User } from 'src/utils/decorators/user/user.decerator';
 import { SwitchPositionsTaskDto } from './dto/switch-position.task.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Task } from './entities/task.entity';
-import { UpdateOrDeleteResponse } from 'src/uttils/swagger/update-or-delete-response';
-import { ErrorResponse } from 'src/uttils/swagger/error-response';
+import { UpdateOrDeleteResponse } from 'src/utils/swagger/update-or-delete-response';
+import { ErrorResponse } from 'src/utils/swagger/error-response';
 
 @Controller('tasks')
 export class TasksController {

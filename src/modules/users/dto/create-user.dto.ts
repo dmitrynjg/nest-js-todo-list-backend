@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsString, Matches } from 'class-validator';
-import { Match } from 'src/uttils/decorators/validator/match.decorator';
-import { GlobalDto } from 'src/uttils/dto/global.dto';
+import { Match } from 'src/utils/decorators/validator/match.decorator';
+import { GlobalDto } from 'src/utils/dto/global.dto';
 
 export class CreateUserDto extends GlobalDto {
   @ApiProperty({

@@ -7,8 +7,8 @@ import {
   IsArray,
   ArrayMinSize,
 } from 'class-validator';
-import { IsGtZeroAndPositive } from 'src/uttils/decorators/validator/is-gt-zero-and-positive.decorator';
-import { GlobalDto } from 'src/uttils/dto/global.dto';
+import { IsGtZeroAndInt } from 'src/utils/decorators/validator/is-gt-zero-and-positive.decorator';
+import { GlobalDto } from 'src/utils/dto/global.dto';
 
 export class TaskPositionDto {
   @ApiProperty({
@@ -16,7 +16,7 @@ export class TaskPositionDto {
     description:
       'Позиция для вывода (отностильно его sort запрос) c тасками Целое число больше 0',
   })
-  @IsGtZeroAndPositive({ message: 'Позиция должна быть целым числом больше 0' })
+  @IsGtZeroAndInt({ message: 'Позиция должна быть целым числом больше 0' })
   position: number;
   @ApiProperty({
     example: '12bcb8a7-ebbb-4c90-a5c1-a4b2c9056da4',
