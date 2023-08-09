@@ -1,12 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import {
-  Matches,
-  IsUUID,
-  ValidateNested,
-  IsArray,
-  ArrayMinSize,
-} from 'class-validator';
+import { IsUUID, ValidateNested, IsArray, ArrayMinSize } from 'class-validator';
 import { IsGtZeroAndInt } from 'src/utils/decorators/validator/is-gt-zero-and-positive.decorator';
 import { GlobalDto } from 'src/utils/dto/global.dto';
 

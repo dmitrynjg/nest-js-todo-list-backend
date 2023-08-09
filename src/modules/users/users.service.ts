@@ -8,11 +8,16 @@ export class UsersService {
   constructor(private usersRepository: UsersRepository) {}
 
   async create(createUserDto: CreateUserDto) {
-    return this.usersRepository.create({
-      login: createUserDto.login,
-      password: createUserDto.password,
-      email: createUserDto.email,
-    });
+    return this.usersRepository
+      .create({
+        login: createUserDto.login,
+        password: createUserDto.password,
+        email: createUserDto.email,
+      })
+      .then((res) => {
+        const { password, ...user } = res;
+        return user;
+      });
   }
 
   findByEmail(email) {
@@ -35,9 +40,10 @@ export class UsersService {
   }
 
   findById(id: string | number) {
-    return this.usersRepository.find({
-      where: {
-        id,
+    return this.usersRepository.findById({
+      id,
+      options: {
+        attributes: ['id', 'login', 'email', 'createdAt', 'updatedAt'],
       },
     });
   }

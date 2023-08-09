@@ -18,7 +18,7 @@ export class UsersController {
     type: UserEntity,
   })
   @UseGuards(AuthGuard)
-  @Get()
+  @Get('/profile')
   getUser(@User() user) {
     return this.usersService.findById(user.id);
   }
