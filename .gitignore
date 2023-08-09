@@ -14,7 +14,7 @@ lerna-debug.log*
 
 env/production.env
 env/development.env
-database
+/database
 # OS
 .DS_Store
 

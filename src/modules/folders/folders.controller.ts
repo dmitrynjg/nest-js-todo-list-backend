@@ -21,6 +21,8 @@ import { ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { QueryParamsDto } from 'src/uttils/query-builder/dto/query-params-dto';
 import { Folder } from './entities/folder.entity';
 import { UpdateOrDeleteResponse } from 'src/uttils/swagger/update-or-delete-response';
+import { Task } from '../tasks/entities/task.entity';
+import { ErrorResponse } from 'src/uttils/swagger/error-response';
 
 @Controller('folders')
 export class FoldersController {
@@ -35,6 +37,11 @@ export class FoldersController {
   @ApiResponse({
     status: 200,
     type: Folder,
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
   })
   create(@User() user, @Body() createFolderDto: CreateFolderDto) {
     return this.foldersService.create({
@@ -52,6 +59,11 @@ export class FoldersController {
     status: 200,
     type: Folder,
     isArray: true,
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
   })
   @Get()
   @UseGuards(AuthGuard)
@@ -77,6 +89,22 @@ export class FoldersController {
     return this.foldersService.findById(id);
   }
 
+  @ApiOperation({ summary: 'Получить задачи по id папки' })
+  @ApiQuery({
+    name: 'id',
+    description: 'query параметры',
+    type: QueryParamsDto,
+  })
+  @ApiResponse({
+    status: 200,
+    type: Task,
+    isArray: true,
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
+  })
   @Get(':id/tasks')
   @UseGuards(AuthGuard)
   findTasks(
@@ -101,6 +129,16 @@ export class FoldersController {
     status: 200,
     type: UpdateOrDeleteResponse,
   })
+  @ApiResponse({
+    status: 403,
+    type: ErrorResponse,
+    description: 'Ошибка при бизнес логики',
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
+  })
   @Patch()
   @UseGuards(AuthGuard)
   update(@User() user, @Body() updateFolderDto: UpdateFolderDto) {
@@ -114,6 +152,16 @@ export class FoldersController {
   @ApiResponse({
     status: 200,
     type: UpdateOrDeleteResponse,
+  })
+  @ApiResponse({
+    status: 403,
+    type: ErrorResponse,
+    description: 'Ошибка при бизнес логики',
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
   })
   @Delete(':id')
   @UseGuards(AuthGuard)

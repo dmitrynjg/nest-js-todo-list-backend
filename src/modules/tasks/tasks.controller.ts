@@ -17,6 +17,7 @@ import { SwitchPositionsTaskDto } from './dto/switch-position.task.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Task } from './entities/task.entity';
 import { UpdateOrDeleteResponse } from 'src/uttils/swagger/update-or-delete-response';
+import { ErrorResponse } from 'src/uttils/swagger/error-response';
 
 @Controller('tasks')
 export class TasksController {
@@ -29,6 +30,16 @@ export class TasksController {
     status: 200,
     type: Task,
   })
+  @ApiResponse({
+    status: 403,
+    type: ErrorResponse,
+    description: 'Ошибка при бизнес логики',
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
+  })
   create(@User() user, @Body() createTaskDto: CreateTaskDto) {
     return this.tasksService.create({ task: createTaskDto, author: user.id });
   }
@@ -40,6 +51,16 @@ export class TasksController {
     status: 200,
     type: Task,
   })
+  @ApiResponse({
+    status: 403,
+    type: ErrorResponse,
+    description: 'Ошибка при бизнес логики',
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
+  })
   findOne(@Param('id') id: string | number) {
     return this.tasksService.findById(id);
   }
@@ -50,6 +71,16 @@ export class TasksController {
   @ApiResponse({
     status: 200,
     type: UpdateOrDeleteResponse,
+  })
+  @ApiResponse({
+    status: 403,
+    type: ErrorResponse,
+    description: 'Ошибка при бизнес логики',
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
   })
   update(@Body() updateTaskDto: UpdateTaskDto, @User() user) {
     return this.tasksService.update({ task: updateTaskDto, author: user.id });
@@ -72,6 +103,16 @@ export class TasksController {
   @ApiResponse({
     status: 200,
     type: UpdateOrDeleteResponse,
+  })
+  @ApiResponse({
+    status: 403,
+    type: ErrorResponse,
+    description: 'Ошибка при бизнес логики',
+  })
+  @ApiResponse({
+    status: 400,
+    type: ErrorResponse,
+    description: 'Ошибка при валидации',
   })
   remove(@Param('id') id: string, @User() user) {
     return this.tasksService.remove(id, user.id);
