@@ -12,7 +12,7 @@ export class ErrorResponse {
   })
   statusCode: number;
   @ApiProperty({
-    examples: ['Email неправильно передан'],
+    example: ['Email неправильно передан'],
     description: 'Сообщение ошибки либо массив string или string',
     required: false,
   })
