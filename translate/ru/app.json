@@ -1,0 +1,16 @@
+{
+  "error": {
+    "INTERNAL_SERVER_ERROR": "Internal Server Error"
+  },
+  "validate": {
+    "error": {
+      "lang": "lang должен быть string значением",
+      "page": "page должен быть целым числом больше 0",
+      "limit": "limit должен быть целым числом больше 0",
+      "filters": "Правильный формат field field:like:%value%",
+      "sort": "Правильный формат sort field:desc или field:asc",
+      "in": "Правильный формат отправки value, value, value",
+      "attributes": "Правильный формат отправки field, field, field"
+    }
+  }
+}

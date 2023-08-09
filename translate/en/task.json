@@ -1,0 +1,21 @@
+{
+  "create": {
+    "folder_not_found": "Такой папки не существует"
+  },
+  "update": {
+    "error": {
+      "not_data": "Вы не скинули данные для обновление задачи"
+    }
+  },
+  "error": {
+    "task_not_found": "Задача не найдена или вы не имеете к ней доступ"
+  },
+  "validate": {
+    "error": {
+      "folder": "folder должен быть uuid папки",
+      "is_done": "isDone должен быть boolean типом",
+      "title": "title тип должен быть string",
+      "id": "id должен быть uuid задачи"
+    }
+  }
+}
