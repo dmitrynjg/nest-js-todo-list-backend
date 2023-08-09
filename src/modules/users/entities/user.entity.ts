@@ -36,10 +36,6 @@ export class User extends Model<User> {
   @Column
   email: string;
 
-  @ApiProperty({
-    description: 'Пароль пользователя',
-    example: '123456Di',
-  })
   @Column({ allowNull: false })
   password: string;
 
