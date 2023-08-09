@@ -49,4 +49,18 @@ export class MainRepository {
   min(field: string, options: FindOptions) {
     return this.model.min(field, options);
   }
+
+  count(options: FindOptions) {
+    return this.model.count(options);
+  }
+
+  async findAllWithPage(query: FindOptions) {
+    const { attributes, include, ...queryCounts } = query;
+    const total = await this.model.count(queryCounts);
+    const result = await this.model.findAll(query);
+    const currentPage =
+      query.offset === 0 ? 1 : query.offset / (query.limit ? query.limit : 10);
+    const totalPages = Math.ceil(total / (query.limit ? query.limit : 10));
+    return { total, currentPage, totalPages, result };
+  }
 }

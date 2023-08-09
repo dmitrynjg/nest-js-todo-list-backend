@@ -1,4 +1,4 @@
-import { MainRepository } from 'src/utils/class/repository';
+import { MainRepository } from 'src/utils/repository/repository';
 import { Task } from './entities/task.entity';
 
 export class TasksRepository extends MainRepository {

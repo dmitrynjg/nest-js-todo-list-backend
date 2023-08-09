@@ -99,7 +99,7 @@ export class TasksController {
 
   @Delete(':id')
   @UseGuards(AuthGuard)
-  @ApiOperation({ summary: 'Удаление по id' })
+  @ApiOperation({ summary: 'Удалить задачу по id' })
   @ApiResponse({
     status: 200,
     type: UpdateOrDeleteResponse,

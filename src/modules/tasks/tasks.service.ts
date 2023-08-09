@@ -147,7 +147,7 @@ export class TasksService {
 
   findAll(query: FindOptions) {
     query.order = [['position', 'ASC']];
-    return this.tasksRepository.findAll(query);
+    return this.tasksRepository.findAllWithPage(query);
   }
 
   findById(id: number | string) {

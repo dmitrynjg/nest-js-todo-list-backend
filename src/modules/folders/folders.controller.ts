@@ -23,6 +23,8 @@ import { Folder } from './entities/folder.entity';
 import { UpdateOrDeleteResponse } from 'src/utils/swagger/update-or-delete-response';
 import { Task } from '../tasks/entities/task.entity';
 import { ErrorResponse } from 'src/utils/swagger/error-response';
+import { FindAllWithPageFolderResponse } from './swagger/find-all-with-page-folder.response';
+import { FindAllWithPageTaskResponse } from '../tasks/swagger/find-all-with-page-task.response';
 
 @Controller('folders')
 export class FoldersController {
@@ -57,7 +59,7 @@ export class FoldersController {
   })
   @ApiResponse({
     status: 200,
-    type: Folder,
+    type: FindAllWithPageFolderResponse,
     isArray: true,
   })
   @ApiResponse({
@@ -97,8 +99,7 @@ export class FoldersController {
   })
   @ApiResponse({
     status: 200,
-    type: Task,
-    isArray: true,
+    type: FindAllWithPageTaskResponse,
   })
   @ApiResponse({
     status: 400,

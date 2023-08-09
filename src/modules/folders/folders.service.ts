@@ -48,9 +48,9 @@ export class FoldersService {
     });
   }
 
-  getUserFolders(query: FindOptions) {
+  async getUserFolders(query: FindOptions) {
     query.include = [{ model: User, attributes: ['login', 'email'] }];
-    return this.foldersRepository.findAll(query);
+    return this.foldersRepository.findAllWithPage(query);
   }
 
   findById(id: string | number) {
