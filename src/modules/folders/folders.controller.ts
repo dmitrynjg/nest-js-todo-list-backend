@@ -51,7 +51,7 @@ export class FoldersController {
       author: user.id,
     });
   }
-  @ApiOperation({ summary: 'Получаить список папок папки' })
+  @ApiOperation({ summary: 'Получаить список папок' })
   @ApiQuery({
     name: 'id',
     description: 'Item ID',
