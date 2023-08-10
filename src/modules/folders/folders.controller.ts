@@ -21,7 +21,6 @@ import { ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { QueryParamsDto } from 'src/utils/query-builder/dto/query-params-dto';
 import { Folder } from './entities/folder.entity';
 import { UpdateOrDeleteResponse } from 'src/utils/swagger/update-or-delete-response';
-import { Task } from '../tasks/entities/task.entity';
 import { ErrorResponse } from 'src/utils/swagger/error-response';
 import { FindAllWithPageFolderResponse } from './swagger/find-all-with-page-folder.response';
 import { FindAllWithPageTaskResponse } from '../tasks/swagger/find-all-with-page-task.response';

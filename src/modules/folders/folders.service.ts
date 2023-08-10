@@ -1,9 +1,13 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { FindOptions } from 'sequelize';
-//import { paginator } from 'src/uttils/query/query.uttils';
+import sequelize from 'sequelize';
+import { FindOptions, Sequelize } from 'sequelize';
+import { ModelStatic } from 'sequelize-typescript';
+import { Col } from 'sequelize/types/utils';
+import { Task } from '../tasks/entities/task.entity';
 import { User } from '../users/entities/user.entity';
 import { CreateFolderDto } from './dto/create-folder.dto';
 import { UpdateFolderDto } from './dto/update-folder.dto';
+import { Folder } from './entities/folder.entity';
 import { FoldersRepository } from './folders.repository';
 
 @Injectable()
@@ -48,14 +52,51 @@ export class FoldersService {
     });
   }
 
+  getAttributes(attributes?: any) {
+    let newAttributes = attributes;
+    if (!attributes) {
+      const modelAttributes = Folder.getAttributes();
+      newAttributes = Object.keys(modelAttributes)
+        .filter((field: any) => !modelAttributes[field].references)
+        .map((field: string) => modelAttributes[field].fieldName);
+    }
+
+    newAttributes = (newAttributes as any[]).concat([
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM task t WHERE t.folderTask = folder.id)',
+        ),
+        'totalTasks',
+      ],
+      [
+        sequelize.literal(
+          `(SELECT COUNT(*) FROM task t WHERE t.is_done = 1 AND t.folderTask = folder.id)`,
+        ),
+        'totalTasksIsDone',
+      ],
+      [
+        sequelize.literal(
+          `(SELECT COUNT(*) FROM task t WHERE t.is_done = 0 AND t.folderTask = folder.id)`,
+        ),
+        'totalTasksNotDone',
+      ],
+    ]);
+
+    return newAttributes;
+  }
+
   async getUserFolders(query: FindOptions) {
     query.include = [{ model: User, attributes: ['login', 'email'] }];
+    query.attributes = this.getAttributes(query.attributes);
     return this.foldersRepository.findAllWithPage(query);
   }
 
   findById(id: string | number) {
     return this.foldersRepository
-      .findById({ id, options: { raw: true } })
+      .findById({
+        id,
+        options: { raw: true, attributes: this.getAttributes() },
+      })
       .then((folder) => (folder ? folder : {}));
   }
 
