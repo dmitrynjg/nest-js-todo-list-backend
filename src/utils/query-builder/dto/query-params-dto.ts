@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, Matches } from 'class-validator';
-import { IsGtZeroAndInt } from 'src/utils/decorators/validator/is-gt-zero-and-positive.decorator';
+import { IsGtZeroAndInt } from 'src/utils/decorators/validator/is-gt-zero-and-int.decorator';
 import { MatchesStringOrArrayString } from 'src/utils/decorators/validator/matches-string-or-array-string.decorator';
 import { GlobalDto } from 'src/utils/dto/global.dto';
 

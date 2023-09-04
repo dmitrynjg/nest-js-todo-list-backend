@@ -1,9 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import sequelize from 'sequelize';
-import { FindOptions, Sequelize } from 'sequelize';
-import { ModelStatic } from 'sequelize-typescript';
-import { Col } from 'sequelize/types/utils';
-import { Task } from '../tasks/entities/task.entity';
+import { FindOptions } from 'sequelize';
 import { User } from '../users/entities/user.entity';
 import { CreateFolderDto } from './dto/create-folder.dto';
 import { UpdateFolderDto } from './dto/update-folder.dto';

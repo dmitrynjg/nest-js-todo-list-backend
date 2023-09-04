@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Op } from 'sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserWithIdDto } from './dto/update-user.dto';
 import { UsersRepository } from './users.repository';
 
 @Injectable()
@@ -14,8 +15,8 @@ export class UsersService {
         password: createUserDto.password,
         email: createUserDto.email,
       })
-      .then((res) => {
-        const { password, ...user } = res;
+      .then((user) => {
+        delete user.password;
         return user;
       });
   }
@@ -46,5 +47,33 @@ export class UsersService {
         attributes: ['id', 'login', 'email', 'createdAt', 'updatedAt'],
       },
     });
+  }
+
+  async update(updateUserDto: UpdateUserWithIdDto) {
+    const { id, ...updateData } = updateUserDto;
+    if (updateData.password && !updateData.passwordConfirm) {
+      throw new HttpException(
+        'user.validate.error.passwordConfirm',
+        HttpStatus.FORBIDDEN,
+      );
+    }
+    if (!Object.keys(updateData).length) {
+      throw new HttpException(
+        'user.auth.error.not_data_updated',
+        HttpStatus.FORBIDDEN,
+      );
+    }
+    const user = await this.usersRepository.findById({ id });
+    if (!user) {
+      throw new HttpException(
+        'user.auth.error.user_not_found',
+        HttpStatus.FORBIDDEN,
+      );
+    }
+    return user.save(updateData).then((res) => {
+      delete res.dataValues.password;
+      return res;
+    });
+    //this.usersRepository.update(updateData, { where: { id: id } });
   }
 }

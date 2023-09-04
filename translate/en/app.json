@@ -1,16 +1,17 @@
+
 {
   "error": {
     "INTERNAL_SERVER_ERROR": "Internal Server Error"
   },
   "validate": {
     "error": {
-      "lang": "lang должен быть string значением",
-      "page": "page должен быть целым числом больше 0",
-      "limit": "limit должен быть целым числом больше 0",
-      "filters": "Правильный формат field field:like:%value%",
-      "sort": "Правильный формат sort field:desc или field:asc",
-      "in": "Правильный формат отправки value, value, value",
-      "attributes": "Правильный формат отправки field, field, field"
+      "lang": "lang must be a string value",
+      "page": "page must be an integer greater than 0",
+      "limit": "limit must be an integer greater than 0",
+      "filters": "Correct format field field:like:%value%",
+      "sort": "Correct format sort field:desc or field:asc",
+      "in": "Correct format for sending value, value, value",
+      "attributes": "Correct submission format field, field, field"
     }
   }
 }

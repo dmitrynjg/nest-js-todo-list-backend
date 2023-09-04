@@ -9,16 +9,29 @@ export const databaseProviders = [
   {
     provide: 'SEQUELIZE',
     useFactory: async (configService: ConfigService) => {
-      const sequelize = new Sequelize({
-        dialect: 'sqlite',
-        storage: path.resolve(
-          __dirname,
-          '..',
-          '..',
-          '..',
-          configService.get('DB_PATH') || 'database/db.sqlite',
-        ),
-      });
+      const databaseConfig = configService.get('database');
+
+      const sequelize = new Sequelize(
+        databaseConfig.type === 'sqlite'
+          ? {
+              dialect: databaseConfig.type,
+              storage: path.resolve(
+                __dirname,
+                '..',
+                '..',
+                '..',
+                databaseConfig.path,
+              ),
+            }
+          : {
+              dialect: databaseConfig.type,
+              host: databaseConfig.host,
+              username: databaseConfig.username,
+              password: databaseConfig.password,
+              port: databaseConfig.port,
+              database: databaseConfig.database,
+            },
+      );
       sequelize.addModels([User, Folder, Task]);
       await sequelize.sync();
       return sequelize;

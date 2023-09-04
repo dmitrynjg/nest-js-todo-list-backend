@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsUUID, ValidateNested, IsArray, ArrayMinSize } from 'class-validator';
-import { IsGtZeroAndInt } from 'src/utils/decorators/validator/is-gt-zero-and-positive.decorator';
+import { IsGtZeroAndInt } from 'src/utils/decorators/validator/is-gt-zero-and-int.decorator';
 import { GlobalDto } from 'src/utils/dto/global.dto';
 
 export class TaskPositionDto {
@@ -16,7 +16,7 @@ export class TaskPositionDto {
     example: '12bcb8a7-ebbb-4c90-a5c1-a4b2c9056da4',
     description: 'UUID задачи',
   })
-  @IsUUID(4, { message: 'id должен быть uuid' })
+  @IsUUID(4, { message: 'task.validate.error.id' })
   id: string;
 }
 
@@ -36,7 +36,7 @@ export class SwitchPositionsTaskDto extends GlobalDto {
   })
   @IsArray()
   @ArrayMinSize(2, {
-    message: 'Минимальное количиство передаваемых данных в tasks 2 штуки',
+    message: 'task.validate.error.tasks_min_size',
   })
   @ValidateNested({ each: true })
   @Type(() => TaskPositionDto)
@@ -45,6 +45,6 @@ export class SwitchPositionsTaskDto extends GlobalDto {
     example: '303a5027-3289-48da-8f23-2213f9a3808c',
     description: 'id папки где мы меняем tasks местами',
   })
-  @IsUUID(4, { message: 'folder должен быть uuid' })
+  @IsUUID(4, { message: 'task.validate.error.folder' })
   folder: string;
 }

@@ -15,9 +15,10 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { User } from 'src/utils/decorators/user/user.decerator';
 import { SwitchPositionsTaskDto } from './dto/switch-position.task.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { Task } from './entities/task.entity';
+
 import { UpdateOrDeleteResponse } from 'src/utils/swagger/update-or-delete-response';
 import { ErrorResponse } from 'src/utils/swagger/error-response';
+import { TaskResponse } from './swagger/task.response';
 
 @Controller('tasks')
 export class TasksController {
@@ -28,7 +29,7 @@ export class TasksController {
   @ApiOperation({ summary: 'Создание задачи' })
   @ApiResponse({
     status: 200,
-    type: Task,
+    type: TaskResponse,
   })
   @ApiResponse({
     status: 403,
@@ -49,7 +50,7 @@ export class TasksController {
   @ApiOperation({ summary: 'Получение задачи по id' })
   @ApiResponse({
     status: 200,
-    type: Task,
+    type: TaskResponse,
   })
   @ApiResponse({
     status: 403,

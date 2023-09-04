@@ -1,20 +1,20 @@
 {
   "validate": {
     "error": {
-      "title": "Загаловок должен быть текстом",
-      "emoji": "Неправильно передан emoji"
+      "title": "Title must be a text",
+      "emoji": "Incorrect emoji provided"
     }
   },
   "error": {
-    "check_is_author": "Папка не найдена или вы не имеете к ней доступ",
-    "update_not_data": "Вы не скинули данные для обновление папки"
+    "check_is_author": "Folder not found or you don't have access to it",
+    "update_not_data": "You didn't provide data to update the folder"
   },
   "postition_switch": {
     "error": {
-      "uniques_id": "id в массиве tasks должны быть уникальны",
-      "uniques_pos": "postion в массиве tasks должны быть уникальны",
-      "max_pos": "Вы отправили position которого нету",
-      "task_not_found": "Таких задач не существуют либо вы не имеете доступ к смене этих задач"
+      "uniques_id": "Ids in the tasks array must be unique",
+      "uniques_pos": "Positions in the tasks array must be unique",
+      "max_pos": "You sent a position that does not exist",
+      "task_not_found": "No such tasks exist or you don't have access to change these tasks"
     }  
   }
 }

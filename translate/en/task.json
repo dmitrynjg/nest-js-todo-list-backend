@@ -1,21 +1,23 @@
 {
   "create": {
-    "folder_not_found": "Такой папки не существует"
+    "foldernotfound": "No such folder exists"
   },
   "update": {
     "error": {
-      "not_data": "Вы не скинули данные для обновление задачи"
+      "notdata": "You did not provide data to update the task"
     }
   },
   "error": {
-    "task_not_found": "Задача не найдена или вы не имеете к ней доступ"
+    "tasknotfound": "Task not found or you do not have access to it"
   },
   "validate": {
     "error": {
-      "folder": "folder должен быть uuid папки",
-      "is_done": "isDone должен быть boolean типом",
-      "title": "title тип должен быть string",
-      "id": "id должен быть uuid задачи"
+      "folder": "folder must be a folder uuid",
+      "isdone": "isDone must be of boolean type",
+      "title": "title must be of string type",
+      "id": "id must be a task uuid",
+      "position": "Position must be an integer greater than 0",
+      "tasks_min_size": "The minimum number of data items to be sent in tasks is 2"
     }
   }
 }

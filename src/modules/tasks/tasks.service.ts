@@ -54,7 +54,7 @@ export class TasksService {
       );
     }
 
-    const position = await this.tasksRepository
+    const findPosition = await this.tasksRepository
       .find({
         attributes: ['position'],
         order: [['position', 'DESC']],
@@ -68,7 +68,7 @@ export class TasksService {
     return this.tasksRepository.create({
       title: task.title,
       authorTask: author,
-      position,
+      position: findPosition,
       isDone: false,
       folderTask: task.folder,
     });

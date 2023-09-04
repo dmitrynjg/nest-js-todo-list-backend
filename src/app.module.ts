@@ -7,6 +7,7 @@ import { TranslationModule } from './modules/translation/translation.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
 import * as path from 'path';
+import { configuration } from './config/configuration';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import * as path from 'path';
         'env',
         `${process.env.NODE_ENV}.env`,
       ),
+      load: [configuration],
     }),
     DatabaseModule,
     TranslationModule,

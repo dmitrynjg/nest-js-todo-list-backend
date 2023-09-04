@@ -1,23 +1,24 @@
 {
   "validate": {
     "error": {
-      "password": "Пароль должна быть хотя бы одна строчная или большая буква, хотя бы одна цифра и длинна хотя бы из 6 сиволов",
-      "login": "Логин должен быть текстом",
-      "email": "Email неправильно передан",
-      "passwordConfirm": "Пароли не совпадают"
+      "password": "Password must contain at least one lowercase or uppercase letter, at least one digit, and must be at least 6 characters long",
+      "login": "Login must be a text",
+      "email": "Incorrectly provided email",
+      "passwordConfirm": "Passwords do not match"
     }
   },
   "register": {
     "error": {
-      "user_by_login_found": "Пользователь с таким логином уже существует",
-      "user_by_email_found": "Пользователь с таким email уже существует"
+      "user_by_login_found": "A user with this login already exists",
+      "user_by_email_found": "A user with this email already exists"
     }
   },
   "auth": {
     "error": {
-      "not_authorized": "Вы не авторизованы",
-      "authorized": "Вы уже авторизованы",
-      "user_not_found": "Неправильный логин или пароль"
+      "not_authorized": "You are not authorized",
+      "authorized": "You are already authorized",
+      "user_not_found": "Incorrect login or password",
+      "not_data_updated": "Data not sent for update"
     }
   }
 }

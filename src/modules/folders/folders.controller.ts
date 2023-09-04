@@ -19,11 +19,11 @@ import { FindOptions } from 'sequelize';
 import { TasksService } from '../tasks/tasks.service';
 import { ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { QueryParamsDto } from 'src/utils/query-builder/dto/query-params-dto';
-import { Folder } from './entities/folder.entity';
 import { UpdateOrDeleteResponse } from 'src/utils/swagger/update-or-delete-response';
 import { ErrorResponse } from 'src/utils/swagger/error-response';
 import { FindAllWithPageFolderResponse } from './swagger/find-all-with-page-folder.response';
 import { FindAllWithPageTaskResponse } from '../tasks/swagger/find-all-with-page-task.response';
+import { FolderResponse } from './swagger/folder.response';
 
 @Controller('folders')
 export class FoldersController {
@@ -37,7 +37,7 @@ export class FoldersController {
   @ApiOperation({ summary: 'Создание папки' })
   @ApiResponse({
     status: 200,
-    type: Folder,
+    type: FolderResponse,
   })
   @ApiResponse({
     status: 400,
@@ -82,7 +82,7 @@ export class FoldersController {
   @ApiOperation({ summary: 'Получаить папку по id' })
   @ApiResponse({
     status: 200,
-    type: Folder,
+    type: FolderResponse,
   })
   @Get(':id')
   @UseGuards(AuthGuard)
